@@ -1,0 +1,18 @@
+---
+import { languageNames, languages } from '../data/site';
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><meta name="robots" content="noindex" /><title>Page not found · 404</title></head>
+  <body class="language-page">
+    <main class="language-shell">
+      <div class="language-mark">404</div>
+      <p class="kicker">Page not found</p>
+      <h1>Return home</h1>
+      <nav class="language-grid" aria-label="Language selection">
+        {languages.map((lang, index) => <a href={`/${lang}/`}><span>0{index + 1}</span><strong>{languageNames[lang]}</strong><i>↗</i></a>)}
+      </nav>
+    </main>
+  </body>
+</html>

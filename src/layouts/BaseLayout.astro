@@ -1,0 +1,31 @@
+---
+import { languages, type Language } from '../data/site';
+import '../styles/global.css';
+
+interface Props { lang: Language; locale: string; dir: 'rtl' | 'ltr'; title: string; description: string; path?: string; }
+const { lang, locale, dir, title, description, path = '' } = Astro.props;
+const base = Astro.site?.toString().replace(/\/$/, '') || 'https://example.github.io';
+const canonical = `${base}/${lang}/${path}`.replace(/\/$/, '/') ;
+---
+<!doctype html>
+<html lang={locale} dir={dir}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#07111f" />
+    <link rel="canonical" href={canonical} />
+    {languages.map((code) => <link rel="alternate" hreflang={code === 'zh-cn' ? 'zh-Hans' : code} href={`${base}/${code}/${path}`} />)}
+    <link rel="alternate" hreflang="x-default" href={`${base}/`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale.replace('-', '_')} />
+    <meta name="twitter:card" content="summary" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

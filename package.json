@@ -1,0 +1,16 @@
+{
+  "name": "amirreza-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && npm run check:privacy",
+    "preview": "astro preview",
+    "check:privacy": "node scripts/privacy-check.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.0.9"
+  }
+}

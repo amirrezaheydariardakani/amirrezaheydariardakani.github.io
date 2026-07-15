@@ -1,0 +1,32 @@
+---
+import { languageNames, languages } from '../data/site';
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#07111f" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={Astro.site || '/'} />
+    {languages.map((lang) => <link rel="alternate" hreflang={lang === 'zh-cn' ? 'zh-Hans' : lang} href={`${Astro.site || '/'}${lang}/`} />)}
+    <link rel="alternate" hreflang="x-default" href={Astro.site || '/'} />
+    <title>Amirreza Heidari Ardekani · Select language</title>
+  </head>
+  <body class="language-page" id="top">
+    <main class="language-shell">
+      <div class="language-mark" aria-hidden="true">AH</div>
+      <p class="kicker">Materials · Surfaces · Data</p>
+      <h1>Amirreza Heidari Ardekani</h1>
+      <p class="language-prompt">Choose a language · انتخاب زبان · Choisir la langue · 选择语言</p>
+      <nav class="language-grid" aria-label="Language selection">
+        {languages.map((lang, index) => (
+          <a href={`/${lang}/`} lang={lang === 'zh-cn' ? 'zh-CN' : lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+            <span>0{index + 1}</span><strong>{languageNames[lang]}</strong><i aria-hidden="true">↗</i>
+          </a>
+        ))}
+      </nav>
+    </main>
+  </body>
+</html>

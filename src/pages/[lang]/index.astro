@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { copy, languageNames, languages, type Language } from '../../data/site';
+
+export function getStaticPaths() { return languages.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Language };
+const t = copy[lang];
+const ids = ['about', 'focus', 'publications', 'toolkit', 'contact'];
+const email = 'amirrezaheydariardakani@gmail.com';
+---
+<BaseLayout lang={lang} locale={t.locale} dir={t.dir} title={`${t.title} · ${t.eyebrow}`} description={t.intro}>
+  <header class="site-header" id="top">
+    <a class="brand" href={`/${lang}/`} aria-label={t.title}><span>AH</span><b>{t.title}</b></a>
+    <nav class="desktop-nav" aria-label="Primary">
+      {t.nav.map((item, i) => <a href={`#${ids[i]}`}>{item}</a>)}
+    </nav>
+    <details class="language-switcher">
+      <summary>{languageNames[lang]} <span>⌄</span></summary>
+      <div>{languages.filter((code) => code !== lang).map((code) => <a href={`/${code}/`} lang={copy[code].locale}>{languageNames[code]}</a>)}</div>
+    </details>
+  </header>
+
+  <main>
+    <section class="hero section-wrap">
+      <div class="hero-copy">
+        <p class="kicker"><span></span>{t.eyebrow}</p>
+        <h1>{t.title}</h1>
+        <p class="lead">{t.intro}</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#publications">{t.primaryCta}<span>↗</span></a>
+          <a class="button secondary" href="#contact">{t.secondaryCta}</a>
+        </div>
+      </div>
+      <aside class="focus-card">
+        <div class="focus-orbit"><div class="monogram">AH</div><i></i><i></i><i></i></div>
+        <p>{t.focusLabel}</p>
+        <ul>{t.focus.map((item) => <li>{item}</li>)}</ul>
+      </aside>
+      <div class="scroll-cue" aria-hidden="true"><span></span>SCROLL</div>
+    </section>
+
+    <section id="about" class="section-wrap split-section reveal">
+      <p class="section-label">{t.sections.about.label}</p>
+      <div><h2>{t.sections.about.title}</h2><p class="large-copy">{t.sections.about.body}</p></div>
+    </section>
+
+    <section id="focus" class="section-wrap block-section reveal">
+      <div class="section-heading"><p class="section-label">{t.sections.expertise.label}</p><h2>{t.sections.expertise.title}</h2></div>
+      <div class="expertise-grid">{t.sections.expertise.items.map((item, i) => <article><span>0{i + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+    </section>
+
+    <section id="publications" class="section-wrap block-section reveal">
+      <div class="section-heading"><p class="section-label">{t.sections.publication.label}</p><h2>{t.sections.publication.title}</h2><p>{t.sections.publication.intro}</p></div>
+      <div class="publication-list">{t.sections.publication.items.map((item, i) => <article class:list={{ featured: i === 0 }}><span class="pub-index">0{i + 1}</span><div><p>{item.meta}</p><h3>{item.title}</h3>{item.link && <a href={item.link} target="_blank" rel="noreferrer">{t.sections.publication.doi} ↗</a>}</div></article>)}</div>
+    </section>
+
+    <section class="section-wrap education-section reveal">
+      <div class="education-main"><p class="section-label">{t.sections.education.label}</p><h2>{t.sections.education.title}</h2><div class="degree"><span>2018—2022</span><h3>{t.sections.education.degree}</h3><p>{t.sections.education.university}</p><b>{t.sections.education.detail}</b></div></div>
+      <div class="award-list">{t.sections.education.awards.map((item) => <article><span>✦</span><div><h3>{item.title}</h3>{item.meta && <p>{item.meta}</p>}</div></article>)}</div>
+    </section>
+
+    <section id="toolkit" class="toolkit-section reveal">
+      <div class="section-wrap"><div class="section-heading light"><p class="section-label">{t.sections.toolkit.label}</p><h2>{t.sections.toolkit.title}</h2></div><div class="toolkit-grid">{t.sections.toolkit.groups.map((group, i) => <article><span>0{i + 1}</span><h3>{group.title}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div></div>
+    </section>
+
+    <section class="section-wrap learning-section reveal">
+      <div class="section-heading"><p class="section-label">{t.sections.learning.label}</p><h2>{t.sections.learning.title}</h2></div>
+      <div class="learning-grid">{t.sections.learning.items.map((item) => <article><span>{item.meta}</span><h3>{item.title}</h3></article>)}</div>
+    </section>
+
+    <section id="contact" class="contact-section reveal">
+      <div class="section-wrap"><p class="section-label">{t.sections.contact.label}</p><h2>{t.sections.contact.title}</h2><p>{t.sections.contact.text}</p><a class="email-link" href={`mailto:${email}`}>{t.sections.contact.button}<span>↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-wrap"><span>© {new Date().getFullYear()} {t.title}</span><span>{t.footer}</span><a href="#top">↑</a></footer>
+</BaseLayout>
