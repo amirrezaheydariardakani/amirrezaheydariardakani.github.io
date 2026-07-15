@@ -286,12 +286,14 @@ a:hover { color: #cc0000; background: #ffff99; }
   padding: 10px 12px;
   border-bottom: 1px dotted #777;
 }
+.publication-list article.featured { position: relative; padding-top: 24px; }
 .publication-list article:last-child { border-bottom: 0; }
 .publication-list article:nth-child(even) { background: #efefd8; }
 .publication-list article.featured::after {
   content: "NEW!";
-  grid-column: 1;
-  grid-row: 1;
+  position: absolute;
+  top: 6px;
+  inset-inline-start: 12px;
   color: #d00000;
   font: bold 9px "Courier New", monospace;
   animation: blink 1s steps(1) infinite;
