@@ -4,7 +4,7 @@ import '../styles/global.css';
 
 interface Props { lang: Language; locale: string; dir: 'rtl' | 'ltr'; title: string; description: string; path?: string; }
 const { lang, locale, dir, title, description, path = '' } = Astro.props;
-const base = Astro.site?.toString().replace(/\/$/, '') || 'https://example.github.io';
+const base = Astro.site?.toString().replace(/\/$/, '') || 'https://amirrezaheydariardakani.github.io';
 const canonical = `${base}/${lang}/${path}`.replace(/\/$/, '/') ;
 ---
 <!doctype html>

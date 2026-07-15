@@ -18,6 +18,7 @@ type SiteCopy = {
   intro: string;
   primaryCta: string;
   secondaryCta: string;
+  portraitAlt: string;
   focusLabel: string;
   focus: string[];
   sections: {
@@ -41,7 +42,7 @@ export const copy: Record<Language, SiteCopy> = {
     eyebrow: 'مهندسی مواد · پژوهش داده‌محور',
     title: 'امیررضا حیدری اردکانی',
     intro: 'فعال در پیوند میان سرامیک، مهندسی سطح و تحلیل داده؛ با تمرکز بر تبدیل داده‌های پیچیده مواد به بینش‌های روشن، قابل تفسیر و کاربردی.',
-    primaryCta: 'مشاهده آثار علمی', secondaryCta: 'ارتباط با من', focusLabel: 'تمرکز پژوهشی',
+    primaryCta: 'مشاهده آثار علمی', secondaryCta: 'ارتباط با من', portraitAlt: 'چهرهٔ امیررضا حیدری اردکانی', focusLabel: 'تمرکز پژوهشی',
     focus: ['اکسیداسیون الکترولیتی پلاسمایی', 'سرامیک‌های پیشرفته', 'زیست‌مواد', 'یادگیری ماشین تفسیرپذیر'],
     sections: {
       about: { label: '01 · معرفی', title: 'مواد، سطح و داده در یک قاب', body: 'علایق من در مرز میان فرآوری مواد، مشخصه‌یابی و مدل‌سازی داده‌محور شکل گرفته است. هدفم استفاده از روش‌های شفاف و قابل تفسیر برای شناخت بهتر رابطه میان پارامترهای فرآیند، ریزساختار و عملکرد مواد است.' },
@@ -80,7 +81,7 @@ export const copy: Record<Language, SiteCopy> = {
     dir: 'ltr', locale: 'en', nav: ['About', 'Focus', 'Publications', 'Toolkit', 'Contact'],
     eyebrow: 'Materials engineering · Data-driven research', title: 'Amirreza Heidari Ardekani',
     intro: 'Working across ceramics, surface engineering, and data analysis—with a focus on turning complex materials data into clear, interpretable, and useful insight.',
-    primaryCta: 'Explore publications', secondaryCta: 'Get in touch', focusLabel: 'Research focus',
+    primaryCta: 'Explore publications', secondaryCta: 'Get in touch', portraitAlt: 'Portrait of Amirreza Heidari Ardekani', focusLabel: 'Research focus',
     focus: ['Plasma electrolytic oxidation', 'Advanced ceramics', 'Biomaterials', 'Interpretable machine learning'],
     sections: {
       about: { label: '01 · Profile', title: 'Materials, surfaces, and data—together', body: 'My interests sit at the intersection of materials processing, characterization, and data-driven modelling. I aim to use transparent, interpretable methods to better understand how process parameters shape microstructure and material performance.' },
@@ -118,7 +119,7 @@ export const copy: Record<Language, SiteCopy> = {
     dir: 'ltr', locale: 'fr', nav: ['Profil', 'Axes', 'Publications', 'Compétences', 'Contact'],
     eyebrow: 'Génie des matériaux · Recherche guidée par les données', title: 'Amirreza Heidari Ardekani',
     intro: 'À la croisée des céramiques, de l’ingénierie des surfaces et de l’analyse de données, avec l’objectif de transformer des données complexes en connaissances claires, interprétables et utiles.',
-    primaryCta: 'Voir les publications', secondaryCta: 'Me contacter', focusLabel: 'Axes de recherche',
+    primaryCta: 'Voir les publications', secondaryCta: 'Me contacter', portraitAlt: 'Portrait d’Amirreza Heidari Ardekani', focusLabel: 'Axes de recherche',
     focus: ['Oxydation électrolytique plasma', 'Céramiques avancées', 'Biomatériaux', 'Apprentissage automatique interprétable'],
     sections: {
       about: { label: '01 · Profil', title: 'Matériaux, surfaces et données', body: 'Mes intérêts se situent à l’interface entre l’élaboration des matériaux, leur caractérisation et la modélisation guidée par les données. Je privilégie des méthodes transparentes et interprétables pour comprendre les liens entre paramètres de procédé, microstructure et performances.' },
@@ -156,7 +157,7 @@ export const copy: Record<Language, SiteCopy> = {
     dir: 'ltr', locale: 'zh-CN', nav: ['简介', '研究方向', '学术成果', '技能', '联系'],
     eyebrow: '材料工程 · 数据驱动研究', title: 'Amirreza Heidari Ardekani',
     intro: '专注于陶瓷、表面工程与数据分析的交叉领域，致力于将复杂的材料数据转化为清晰、可解释且有价值的认识。',
-    primaryCta: '查看学术成果', secondaryCta: '联系我', focusLabel: '研究重点',
+    primaryCta: '查看学术成果', secondaryCta: '联系我', portraitAlt: 'Amirreza Heidari Ardekani 肖像', focusLabel: '研究重点',
     focus: ['等离子体电解氧化', '先进陶瓷', '生物材料', '可解释机器学习'],
     sections: {
       about: { label: '01 · 简介', title: '连接材料、表面与数据', body: '我的兴趣集中在材料加工、表征和数据驱动建模的交叉领域。我希望通过透明、可解释的方法，更深入地理解工艺参数、微观结构与材料性能之间的关系。' },

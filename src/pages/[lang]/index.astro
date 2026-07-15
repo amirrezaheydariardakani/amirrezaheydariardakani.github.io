@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { copy, languageNames, languages, type Language } from '../../data/site';
+import { Image } from 'astro:assets';
+import portrait from '../../assets/portrait.webp';
 
 export function getStaticPaths() { return languages.map((lang) => ({ params: { lang }, props: { lang } })); }
 const { lang } = Astro.props as { lang: Language };
@@ -9,6 +11,11 @@ const ids = ['about', 'focus', 'publications', 'toolkit', 'contact'];
 const email = 'amirrezaheydariardakani@gmail.com';
 ---
 <BaseLayout lang={lang} locale={t.locale} dir={t.dir} title={`${t.title} · ${t.eyebrow}`} description={t.intro}>
+  <div class="system-bar">
+    <span>AH RESEARCH ARCHIVE // PERSONAL ACADEMIC HOMEPAGE</span>
+    <span>PEO · XRD · FTIR · PYTHON · ML</span>
+    <span>LAST REVISED: 2026-07-16</span>
+  </div>
   <header class="site-header" id="top">
     <a class="brand" href={`/${lang}/`} aria-label={t.title}><span>AH</span><b>{t.title}</b></a>
     <nav class="desktop-nav" aria-label="Primary">
@@ -20,7 +27,7 @@ const email = 'amirrezaheydariardakani@gmail.com';
     </details>
   </header>
 
-  <main>
+  <main class="document-window">
     <section class="hero section-wrap">
       <div class="hero-copy">
         <p class="kicker"><span></span>{t.eyebrow}</p>
@@ -32,7 +39,10 @@ const email = 'amirrezaheydariardakani@gmail.com';
         </div>
       </div>
       <aside class="focus-card">
-        <div class="focus-orbit"><div class="monogram">AH</div><i></i><i></i><i></i></div>
+        <figure class="portrait-frame">
+          <Image src={portrait} alt={t.portraitAlt} width={300} height={300} loading="eager" />
+          <figcaption>AH // ARCHIVE PORTRAIT</figcaption>
+        </figure>
         <p>{t.focusLabel}</p>
         <ul>{t.focus.map((item) => <li>{item}</li>)}</ul>
       </aside>
@@ -69,9 +79,9 @@ const email = 'amirrezaheydariardakani@gmail.com';
     </section>
 
     <section id="contact" class="contact-section reveal">
-      <div class="section-wrap"><p class="section-label">{t.sections.contact.label}</p><h2>{t.sections.contact.title}</h2><p>{t.sections.contact.text}</p><a class="email-link" href={`mailto:${email}`}>{t.sections.contact.button}<span>↗</span></a></div>
+      <div class="section-wrap"><p class="section-label">{t.sections.contact.label}</p><h2>{t.sections.contact.title}</h2><p>{t.sections.contact.text}</p><a class="email-address" href={`mailto:${email}`}>{email}</a><br /><a class="email-link" href={`mailto:${email}`}>{t.sections.contact.button}<span>↗</span></a></div>
     </section>
   </main>
 
-  <footer class="site-footer section-wrap"><span>© {new Date().getFullYear()} {t.title}</span><span>{t.footer}</span><a href="#top">↑</a></footer>
+  <footer class="site-footer section-wrap"><span>© {new Date().getFullYear()} {t.title}</span><span>{t.footer}</span><span class="validation-mark">[ HTML ] [ CSS ] [ UTF-8 ]</span><a href="#top">↑ TOP</a></footer>
 </BaseLayout>
